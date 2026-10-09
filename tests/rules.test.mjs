@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
 import { doc, getDoc, getDocs, collection, setDoc, updateDoc, deleteDoc, writeBatch, serverTimestamp, Timestamp } from 'firebase/firestore';
 
-const OWNER = 'owner@example.com';
+const OWNER = 'skandasaitimeworld@gmail.com';
 let env;
 
 before(async () => {

@@ -7,7 +7,7 @@ service cloud.firestore {
     function isOwner() {
       return request.auth != null
         && request.auth.token.email_verified == true
-        && request.auth.token.email in ['owner@example.com'];
+        && request.auth.token.email in ['skandasaitimeworld@gmail.com'];
     }
     function okStr(v, min, max) {
       return v is string && v.size() >= min && v.size() <= max;
