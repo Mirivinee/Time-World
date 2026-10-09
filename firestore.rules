@@ -13,7 +13,7 @@ service cloud.firestore {
       return v is string && v.size() >= min && v.size() <= max;
     }
     function okSlot(s) {
-      return s in ['Morning (9-12)', 'Afternoon (12-4)', 'Evening (4-7)'];
+      return s in ['Morning (9:30-12)', 'Afternoon (12-4)', 'Evening (4-9)'];
     }
     function okStatus(s) {
       return s in ['Booked', 'Received', 'Repairing', 'Ready', 'Delivered', 'Cancelled'];

@@ -26,7 +26,7 @@ const ymd = d => d.toISOString().slice(0, 10);
 const booking = (o = {}) => ({
   name: 'Asha', phone: '9876543210', clockType: 'small',
   date: Timestamp.fromDate(tomorrow()), dateStr: ymd(tomorrow()),
-  slot: 'Morning (9-12)', status: 'Booked', createdAt: serverTimestamp(), ...o,
+  slot: 'Morning (9:30-12)', status: 'Booked', createdAt: serverTimestamp(), ...o,
 });
 const trackDoc = (b) => ({ status: 'Booked', dateStr: b.dateStr, slot: b.slot, clockType: b.clockType, createdAt: serverTimestamp() });
 
