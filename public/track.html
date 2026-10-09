@@ -21,7 +21,7 @@
   <h1>Track your repair</h1>
   <form id="trackForm" class="card" novalidate>
     <label>Booking ID (8 letters/numbers)
-      <input id="bid" maxlength="8" autocapitalize="characters" autocomplete="off" required>
+      <input id="bid" maxlength="8" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" required>
     </label>
     <label>Mobile number you booked with
       <input id="phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" required>
@@ -30,8 +30,8 @@
     <button class="btn btn-primary" type="submit">Check status</button>
   </form>
 
-  <section id="result" class="card" hidden aria-live="polite">
-    <h2 id="resultTitle"></h2>
+  <section id="result" class="card" hidden>
+    <h2 id="resultTitle" tabindex="-1"></h2>
     <p id="resultWhen" class="muted"></p>
     <ol id="steps" class="steps"></ol>
   </section>

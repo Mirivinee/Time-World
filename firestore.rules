@@ -18,6 +18,17 @@ service cloud.firestore {
     function okStatus(s) {
       return s in ['Booked', 'Received', 'Repairing', 'Ready', 'Delivered', 'Cancelled'];
     }
+    function pad(n) {
+      return n < 10 ? '0' + string(n) : string(n);
+    }
+    // dateStr must be the calendar date (UTC) of the 'date' timestamp. The site stores noon IST (06:30 UTC).
+    function dateMatches(d) {
+      return d.dateStr == string(d.date.year()) + '-' + pad(d.date.month()) + '-' + pad(d.date.day());
+    }
+    function isWorkingDay(d) {
+      let p = /databases/$(database)/documents/settings/availability;
+      return !exists(p) || (d.date.dayOfWeek() % 7) in get(p).data.get('workDays', [0, 1, 2, 3, 4, 5, 6]);
+    }
     function isBlocked(dateStr) {
       let p = /databases/$(database)/documents/settings/availability;
       return exists(p) && dateStr in get(p).data.get('blocked', []);
@@ -29,18 +40,20 @@ service cloud.firestore {
       return id.matches('^[A-Z2-9]{8}$')
         && d.keys().hasOnly(['name', 'phone', 'clockType', 'date', 'dateStr', 'slot', 'address', 'status', 'createdAt'])
         && d.keys().hasAll(['name', 'phone', 'clockType', 'date', 'dateStr', 'slot', 'status', 'createdAt'])
-        && okStr(d.name, 1, 60)
+        && okStr(d.name, 1, 60) && d.name.matches('^\\S(.*\\S)?$')
         && d.phone is string && d.phone.matches('^[0-9]{10}$')
         && d.clockType in ['big', 'small']
         && d.date is timestamp
         && d.date > request.time
         && d.date < request.time + duration.value(90, 'd')
         && d.dateStr is string && d.dateStr.matches('^20[0-9]{2}-[0-9]{2}-[0-9]{2}$')
+        && dateMatches(d)
+        && isWorkingDay(d)
         && !isBlocked(d.dateStr)
         && okSlot(d.slot)
         && d.status == 'Booked'
         && d.createdAt == request.time
-        && ((d.clockType == 'big' && d.keys().hasAny(['address']) && okStr(d.address, 5, 200))
+        && ((d.clockType == 'big' && d.keys().hasAny(['address']) && okStr(d.address, 5, 200) && d.address.matches('(?s)^\\S.*\\S$'))
             || (d.clockType == 'small' && !d.keys().hasAny(['address'])));
     }
 

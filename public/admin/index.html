@@ -14,7 +14,7 @@
   <nav aria-label="Owner">
     <a href="/admin/" aria-current="page">Bookings</a>
     <a href="/admin/reminders">Reminders<span id="dueBadge" class="badge" hidden>0</span></a>
-    <a href="#" id="logoutBtn">Sign out</a>
+    <button type="button" id="logoutBtn" class="navbtn">Sign out</button>
   </nav>
 </div></header>
 
@@ -34,9 +34,9 @@
       <button class="btn" type="button" data-range="week" aria-pressed="false">7 days</button>
       <button class="btn" type="button" data-range="all" aria-pressed="false">All</button>
     </div>
-    <div id="list" class="stack" aria-live="polite"></div>
+    <div id="list" class="stack"></div>
 
-    <details class="card" style="margin-top:16px">
+    <details class="card">
       <summary>Days off and limits</summary>
       <div class="stack">
         <fieldset><legend>Working days</legend><p class="muted">Tick <b>Sun</b> if you are open on Sundays. This also updates the opening hours shown on the website. For a single day off, use "Block a day off" below.</p><div id="workDays" class="days"></div></fieldset>

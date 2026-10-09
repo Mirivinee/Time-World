@@ -30,9 +30,11 @@ if (document.querySelector('[data-shop-hours]')) {
 }
 set('[data-shop-phone]', e => { e.textContent = SHOP.phone; });
 
-export function show(el, msg) {
+export function show(el, msg, field) {
   el.textContent = msg;
   el.hidden = false;
+  document.querySelectorAll('[aria-invalid]').forEach(i => i.removeAttribute('aria-invalid'));
+  if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
 }
 
 export const ymd = d =>

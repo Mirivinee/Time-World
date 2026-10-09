@@ -14,9 +14,10 @@ $('trackForm').addEventListener('submit', async e => {
   err.hidden = true;
   $('result').hidden = true;
   const bid = $('bid').value.trim().toUpperCase();
+  $('bid').value = bid;
   const phone = $('phone').value.replace(/\s/g, '');
-  if (!/^[A-Z2-9]{8}$/.test(bid)) return show(err, 'Booking ID should be 8 letters/numbers.');
-  if (!/^[0-9]{10}$/.test(phone)) return show(err, 'Please enter a 10-digit mobile number.');
+  if (!/^[A-Z2-9]{8}$/.test(bid)) return show(err, 'Booking ID should be 8 letters/numbers.', $('bid'));
+  if (!/^[0-9]{10}$/.test(phone)) return show(err, 'Please enter a 10-digit mobile number.', $('phone'));
 
   let snap;
   try {
@@ -42,4 +43,5 @@ $('trackForm').addEventListener('submit', async e => {
     });
   }
   $('result').hidden = false;
+  $('resultTitle').focus();
 });

@@ -40,16 +40,16 @@ function newId() {
 }
 
 function check(v) {
-  if (!v.name) return 'Please enter your name.';
-  if (!/^[0-9]{10}$/.test(v.phone)) return 'Please enter a 10-digit mobile number.';
-  if (!v.clockType) return 'Please choose big clock or small clock.';
-  if (v.clockType === 'big' && (v.address.length < 5 || v.address.length > 200)) return 'Please enter your home address.';
-  if (!v.dateStr) return 'Please choose a date.';
+  if (!v.name) return ['Please enter your name.', $('name')];
+  if (!/^[0-9]{10}$/.test(v.phone)) return ['Please enter a 10-digit mobile number.', $('phone')];
+  if (!v.clockType) return ['Please choose big clock or small clock.', form.querySelector('input[name="clockType"]')];
+  if (v.clockType === 'big' && (v.address.length < 5 || v.address.length > 200)) return ['Please enter your home address.', $('address')];
+  if (!v.dateStr) return ['Please choose a date.', $('date')];
   const d = new Date(v.dateStr + 'T12:00:00');
-  if (!(d > new Date())) return 'Please choose a date from tomorrow onwards.';
-  if (avail.blocked.includes(v.dateStr)) return 'Sorry, we are closed on that day. Please choose another date.';
-  if (!avail.workDays.includes(d.getDay())) return 'Sorry, we are closed on that day of the week. Please choose another date.';
-  return '';
+  if (!(d > new Date())) return ['Please choose a date from tomorrow onwards.', $('date')];
+  if (avail.blocked.includes(v.dateStr)) return ['Sorry, we are closed on that day. Please choose another date.', $('date')];
+  if (!avail.workDays.includes(d.getDay())) return ['Sorry, we are closed on that day of the week. Please choose another date.', $('date')];
+  return null;
 }
 
 form.addEventListener('submit', async e => {
@@ -64,7 +64,7 @@ form.addEventListener('submit', async e => {
     slot: $('slot').value,
   };
   const problem = check(v);
-  if (problem) return show(err, problem);
+  if (problem) return show(err, problem[0], problem[1]);
 
   const id = newId();
   if ($('website').value) return finish(id, v.phone); // honeypot: pretend success, save nothing
@@ -76,7 +76,7 @@ form.addEventListener('submit', async e => {
   } catch { /* storage blocked: skip cooldown */ }
 
   $('submitBtn').disabled = true;
-  const date = Timestamp.fromDate(new Date(v.dateStr + 'T12:00:00'));
+  const date = Timestamp.fromMillis(Date.parse(v.dateStr + 'T06:30:00Z'));
   const booking = {
     name: v.name, phone: v.phone, clockType: v.clockType, date, dateStr: v.dateStr,
     slot: v.slot, status: 'Booked', createdAt: serverTimestamp(),
@@ -103,5 +103,5 @@ function finish(id) {
   $('bookingId').textContent = id;
   $('trackLink').href = '/track?id=' + encodeURIComponent(id);
   $('done').hidden = false;
-  $('done').scrollIntoView();
+  $('done').focus();
 }

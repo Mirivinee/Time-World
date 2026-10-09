@@ -36,7 +36,7 @@
     </fieldset>
 
     <label id="addressRow" hidden>Home address
-      <textarea id="address" rows="3" maxlength="200"></textarea>
+      <textarea id="address" rows="3" maxlength="200" autocomplete="street-address"></textarea>
     </label>
 
     <label>Preferred date
@@ -52,7 +52,7 @@
     <button id="submitBtn" class="btn btn-primary" type="submit">Book my clock repair</button>
   </form>
 
-  <section id="done" class="card stack" hidden>
+  <section id="done" class="card stack" tabindex="-1" hidden>
     <h2>Thank you, your request is in</h2>
     <p>Your booking ID is:</p>
     <p class="id-big" id="bookingId"></p>

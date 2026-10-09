@@ -14,7 +14,7 @@
   <nav aria-label="Owner">
     <a href="/admin/">Bookings</a>
     <a href="/admin/reminders" aria-current="page">Reminders<span id="dueBadge" class="badge" hidden>0</span></a>
-    <a href="#" id="logoutBtn">Sign out</a>
+    <button type="button" id="logoutBtn" class="navbtn">Sign out</button>
   </nav>
 </div></header>
 
@@ -34,7 +34,7 @@
       </label>
       <button class="btn btn-primary" type="submit">Add reminder</button>
     </form>
-    <div id="list" class="stack" aria-live="polite"></div>
+    <div id="list" class="stack"></div>
   </div>
 </main>
 <script type="module" src="/js/reminders.js"></script>

@@ -111,3 +111,24 @@ test('signed-in non-owner is denied', async () => {
   await assertFails(getDocs(collection(stranger(), 'reminders')));
 });
 test('owner e-mail without verification is denied', () => assertFails(getDocs(collection(unverified(), 'bookings'))));
+
+// ---- date binding, working days, blank values ----
+const nextDow = (dow) => { const d = new Date(Date.now() + 36 * 3600e3); d.setUTCHours(6, 30, 0, 0); while (d.getUTCDay() !== dow) d.setUTCDate(d.getUTCDate() + 1); return d; };
+test('dateStr that does not match date fails', () =>
+  assertFails(create(pub(), 'ABCD2360', booking({ dateStr: ymd(new Date(Date.now() + 5 * 864e5)) }))));
+test('Sunday booking fails when Sunday is not a working day', async () => {
+  await env.withSecurityRulesDisabled(c => setDoc(doc(c.firestore(), 'settings', 'availability'), { workDays: [1, 2, 3, 4, 5, 6], blocked: [] }));
+  const sun = nextDow(0);
+  await assertFails(create(pub(), 'ABCD2361', booking({ date: Timestamp.fromDate(sun), dateStr: ymd(sun) })));
+  const mon = nextDow(1);
+  await assertSucceeds(create(pub(), 'ABCD2362', booking({ date: Timestamp.fromDate(mon), dateStr: ymd(mon) })));
+});
+test('Sunday booking works when owner opens Sundays', async () => {
+  await env.withSecurityRulesDisabled(c => setDoc(doc(c.firestore(), 'settings', 'availability'), { workDays: [0, 1, 2, 3, 4, 5, 6], blocked: [] }));
+  const sun = nextDow(0);
+  await assertSucceeds(create(pub(), 'ABCD2363', booking({ date: Timestamp.fromDate(sun), dateStr: ymd(sun) })));
+});
+test('blank or padded name fails', async () => {
+  await assertFails(create(pub(), 'ABCD2364', booking({ name: '   ' })));
+  await assertFails(create(pub(), 'ABCD2365', booking({ name: ' Asha' })));
+});

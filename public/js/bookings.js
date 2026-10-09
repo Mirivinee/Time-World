@@ -49,7 +49,7 @@ function card(id, b, overLimit) {
   const resched = el('div', { class: 'stack', hidden: '' }, newDate, newSlot,
     el('button', { class: 'btn btn-primary', type: 'button', onclick: () => {
       if (!newDate.value) return;
-      save(id, b, { date: Timestamp.fromDate(new Date(newDate.value + 'T12:00:00')), dateStr: newDate.value, slot: newSlot.value });
+      save(id, b, { date: Timestamp.fromMillis(Date.parse(newDate.value + 'T06:30:00Z')), dateStr: newDate.value, slot: newSlot.value });
     } }, 'Save new time'));
 
   const cancel = el('button', { class: 'btn btn-danger', type: 'button' }, 'Cancel booking');

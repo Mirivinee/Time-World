@@ -31,6 +31,7 @@ export function showError(e) {
     ? 'This Google account is not allowed to use the dashboard.'
     : 'Something went wrong. Please try again.';
   box.hidden = false;
+  if (e?.code === 'permission-denied') $('#app').hidden = true;
 }
 
 // loginPage=true: show login box when signed out. Otherwise redirect to /admin/.
