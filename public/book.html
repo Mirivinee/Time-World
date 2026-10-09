@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a Clock Repair</title>
+<meta name="description" content="Book a clock repair. Big clocks: home visit. Small clocks: drop-off at our shop.">
+<meta name="theme-color" content="#FBF6EC">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="/" data-shop-name>Your Shop Name</a>
+  <nav aria-label="Main">
+    <a href="/">Home</a><a href="/book" aria-current="page">Book a clock</a><a href="/watches">Watches</a><a href="/track">Track repair</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Book a clock repair</h1>
+  <p class="muted">Watches? Please <a href="/watches">visit the store</a>. We will call you to confirm your booking.</p>
+
+  <form id="bookForm" class="card" novalidate>
+    <label>Your name
+      <input id="name" autocomplete="name" maxlength="60" required>
+    </label>
+    <label>Mobile number (10 digits)
+      <input id="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" required>
+    </label>
+
+    <fieldset>
+      <legend>Type of clock</legend>
+      <label class="choice"><input type="radio" name="clockType" value="big"><span><b>Big clock</b><br><span class="muted">Grandfather, wall, cuckoo. We visit your home.</span></span></label>
+      <label class="choice"><input type="radio" name="clockType" value="small"><span><b>Small clock</b><br><span class="muted">Mantel, table, alarm. You bring it to our shop.</span></span></label>
+    </fieldset>
+
+    <label id="addressRow" hidden>Home address
+      <textarea id="address" rows="3" maxlength="200"></textarea>
+    </label>
+
+    <label>Preferred date
+      <input id="date" type="date" required>
+    </label>
+    <label>Preferred time
+      <select id="slot"></select>
+    </label>
+
+    <div class="hp" aria-hidden="true"><label>Website <input id="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <p id="formError" class="error" role="alert" hidden></p>
+    <button id="submitBtn" class="btn btn-primary" type="submit">Book my clock repair</button>
+  </form>
+
+  <section id="done" class="card stack" hidden>
+    <h2>Thank you, your request is in</h2>
+    <p>Your booking ID is:</p>
+    <p class="id-big" id="bookingId"></p>
+    <p>Please save it. You will need it and your phone number to check your repair status. We will call you to confirm.</p>
+    <a id="trackLink" class="btn" href="/track">Check status</a>
+  </section>
+</main>
+
+<div class="cta-bar">
+  <a class="btn btn-call" data-call href="tel:+910000000000">Call us</a>
+  <a class="btn btn-wa" data-wa href="https://wa.me/910000000000" rel="noopener">WhatsApp</a>
+</div>
+<script type="module" src="/js/book.js"></script>
+</body>
+</html>

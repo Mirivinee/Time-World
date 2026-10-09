@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track Your Repair</title>
+<meta name="description" content="Check the status of your clock repair with your booking ID and phone number.">
+<meta name="theme-color" content="#FBF6EC">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="/" data-shop-name>Your Shop Name</a>
+  <nav aria-label="Main">
+    <a href="/">Home</a><a href="/book">Book a clock</a><a href="/watches">Watches</a><a href="/track" aria-current="page">Track repair</a>
+  </nav>
+</div></header>
+
+<main class="wrap stack">
+  <h1>Track your repair</h1>
+  <form id="trackForm" class="card" novalidate>
+    <label>Booking ID (8 letters/numbers)
+      <input id="bid" maxlength="8" autocapitalize="characters" autocomplete="off" required>
+    </label>
+    <label>Mobile number you booked with
+      <input id="phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" required>
+    </label>
+    <p id="trackError" class="error" role="alert" hidden></p>
+    <button class="btn btn-primary" type="submit">Check status</button>
+  </form>
+
+  <section id="result" class="card" hidden aria-live="polite">
+    <h2 id="resultTitle"></h2>
+    <p id="resultWhen" class="muted"></p>
+    <ol id="steps" class="steps"></ol>
+  </section>
+</main>
+
+<div class="cta-bar">
+  <a class="btn btn-call" data-call href="tel:+910000000000">Call us</a>
+  <a class="btn btn-wa" data-wa href="https://wa.me/910000000000" rel="noopener">WhatsApp</a>
+</div>
+<script type="module" src="/js/track.js"></script>
+</body>
+</html>
