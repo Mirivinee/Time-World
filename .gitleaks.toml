@@ -1,0 +1,9 @@
+# Firebase web apiKey is a public identifier (see CLAUDE.md rule 1), not a secret.
+# Allowlisted by exact value in the one file that holds it; everything else is still scanned.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Public Firebase web apiKey"
+paths = ['''public/js/config\.js''']
+regexes = ['''AIzaSyB44IdEv4ueOukjlW0l5hpfZhT8n9Tvwkk''']
