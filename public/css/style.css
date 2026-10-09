@@ -17,7 +17,12 @@ a { color: var(--brass); }
 .muted { color: var(--muted); }
 .site-header { background: var(--card); border-bottom: 1px solid var(--line); }
 .site-header .wrap { padding-block: 12px; }
-.brand { font: 700 20px Georgia, serif; color: var(--ink); text-decoration: none; display: block; margin-bottom: 4px; }
+.brand { font: 700 20px Georgia, serif; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.brand img { flex: none; }
+.svc { display: flex; gap: 16px; align-items: center; }
+.svc img { flex: none; width: 56px; height: 56px; }
+.svc > div { min-width: 0; }
+.svc p { margin: 0; }
 nav { display: flex; flex-wrap: wrap; gap: 8px; }
 nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; text-decoration: none; font-weight: 600; }
 nav a[aria-current="page"] { border-bottom: 3px solid var(--brass); }
