@@ -10,10 +10,10 @@ export const SHOP = {
 
 // Firebase web config (public identifiers, protected by Rules + Auth). Fill from Firebase console.
 export const FIREBASE_CONFIG = {
-  apiKey: '',
-  authDomain: '',
-  projectId: '',
-  appId: '',
+  apiKey: 'AIzaSyB44IdEv4ueOukjlW0l5hpfZhT8n9Tvwkk',
+  authDomain: 'skanda-sai-time-world.firebaseapp.com',
+  projectId: 'skanda-sai-time-world',
+  appId: '1:388256546151:web:2ab6f64eef72497ed583c2',
 };
 
 // reCAPTCHA v3 site key for Firebase App Check (public). Leave empty until App Check is set up.
