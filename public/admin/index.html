@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bookings – Owner</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <span class="brand">Owner dashboard</span>
+  <nav aria-label="Owner">
+    <a href="/admin/" aria-current="page">Bookings</a>
+    <a href="/admin/reminders">Reminders<span id="dueBadge" class="badge" hidden>0</span></a>
+    <a href="#" id="logoutBtn">Sign out</a>
+  </nav>
+</div></header>
+
+<main class="wrap stack">
+  <p id="error" class="error" role="alert" hidden></p>
+
+  <section id="login" class="card stack" hidden>
+    <h1>Owner sign in</h1>
+    <p>Only the shop owner can use this page.</p>
+    <button id="loginBtn" class="btn btn-primary" type="button">Sign in with Google</button>
+  </section>
+
+  <div id="app" hidden>
+    <h1>Bookings</h1>
+    <div class="tabs" role="group" aria-label="Show">
+      <button class="btn" type="button" data-range="today" aria-pressed="true">Today</button>
+      <button class="btn" type="button" data-range="week" aria-pressed="false">7 days</button>
+      <button class="btn" type="button" data-range="all" aria-pressed="false">All</button>
+    </div>
+    <div id="list" class="stack" aria-live="polite"></div>
+
+    <details class="card" style="margin-top:16px">
+      <summary>Days off and limits</summary>
+      <div class="stack">
+        <fieldset><legend>Working days</legend><div id="workDays" class="days"></div></fieldset>
+        <label>Most home visits per day
+          <input id="maxVisits" type="number" inputmode="numeric" min="1" max="20">
+        </label>
+        <label>Block a day off
+          <input id="blockDate" type="date">
+        </label>
+        <button id="addBlocked" class="btn" type="button">Add day off</button>
+        <ul id="blockedList" class="chips"></ul>
+        <button id="saveSettings" class="btn btn-primary" type="button">Save</button>
+        <p id="saved" class="ok" role="status" hidden>Saved.</p>
+      </div>
+    </details>
+  </div>
+</main>
+<script type="module" src="/js/bookings.js"></script>
+</body>
+</html>

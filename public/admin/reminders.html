@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Reminders – Owner</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <span class="brand">Owner dashboard</span>
+  <nav aria-label="Owner">
+    <a href="/admin/">Bookings</a>
+    <a href="/admin/reminders" aria-current="page">Reminders<span id="dueBadge" class="badge" hidden>0</span></a>
+    <a href="#" id="logoutBtn">Sign out</a>
+  </nav>
+</div></header>
+
+<main class="wrap stack">
+  <p id="error" class="error" role="alert" hidden></p>
+  <section id="login" hidden></section>
+
+  <div id="app" class="stack" hidden>
+    <h1>Reminders</h1>
+    <p class="muted">Home visits are added here automatically, one day before.</p>
+    <form id="addForm" class="card" novalidate>
+      <label>New reminder
+        <input id="text" maxlength="200" required>
+      </label>
+      <label>Remind me on
+        <input id="dueDate" type="date" required>
+      </label>
+      <button class="btn btn-primary" type="submit">Add reminder</button>
+    </form>
+    <div id="list" class="stack" aria-live="polite"></div>
+  </div>
+</main>
+<script type="module" src="/js/reminders.js"></script>
+</body>
+</html>
