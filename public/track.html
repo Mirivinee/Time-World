@@ -6,19 +6,23 @@
 <title>Track Your Repair</title>
 <meta name="description" content="Check the status of your clock repair with your booking ID and phone number.">
 <meta name="theme-color" content="#FBF6EC">
-<link rel="icon" href="/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon.png" type="image/png">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <header class="site-header"><div class="wrap">
-  <a class="brand" href="/"><img src="/img/logo.svg" alt="" width="32" height="32"><span data-shop-name>Skanda Sai Time World</span></a>
+  <a class="brand" href="/"><small>Clock &amp; Watch Repair</small><span data-shop-name>Skanda Sai Time World</span></a>
   <nav aria-label="Main">
     <a href="/">Home</a><a href="/book">Book a clock</a><a href="/watches">Watches</a><a href="/track" aria-current="page">Track repair</a>
   </nav>
 </div></header>
 
-<main class="wrap stack">
+<section class="page-hero ph-track"><div class="wrap">
   <h1>Track your repair</h1>
+  <p>Enter your booking ID and phone number.</p>
+</div></section>
+
+<main class="wrap stack">
   <form id="trackForm" class="card" novalidate>
     <label>Booking ID (8 letters/numbers)
       <input id="bid" maxlength="8" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" required>

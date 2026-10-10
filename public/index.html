@@ -5,67 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clock &amp; Watch Repair – Book a Repair or Call Us</title>
 <meta name="description" content="Clock repair at your home or our shop, and watch repair in store. Book online or call us.">
-<meta name="theme-color" content="#FBF6EC">
-<link rel="icon" href="/img/logo.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2B1D12">
+<link rel="icon" href="/img/favicon.png" type="image/png">
+<link rel="preload" as="image" href="/img/photos/movement.jpg">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <header class="site-header"><div class="wrap">
-  <a class="brand" href="/"><img src="/img/logo.svg" alt="" width="32" height="32"><span data-shop-name>Skanda Sai Time World</span></a>
+  <a class="brand" href="/"><small>Clock &amp; Watch Repair</small><span data-shop-name>Skanda Sai Time World</span></a>
   <nav aria-label="Main">
     <a href="/" aria-current="page">Home</a><a href="/book">Book a clock</a><a href="/watches">Watches</a><a href="/track">Track repair</a>
   </nav>
 </div></header>
 
-<main class="wrap stack">
-  <section class="hero">
+<section class="hero-photo">
+  <div class="wrap">
+    <span class="eyebrow">Bengaluru · Repairs done by hand</span>
     <h1>Clock &amp; watch repair you can trust</h1>
-    <p class="muted">Home visits for big clocks. Drop-off for small ones. We call you to confirm.</p>
+    <p id="openStatusWrap"><span id="openStatus" class="status-pill" role="status">Checking opening hours…</span></p>
+    <p>Home visits for big clocks. Drop-off for small ones. Watches are looked at in store. We always call you to confirm.</p>
     <div class="hero-actions">
       <a class="btn btn-call" data-call href="tel:+917899235968">Call us</a>
       <a class="btn btn-wa" data-wa href="https://wa.me/917899235968" rel="noopener">WhatsApp</a>
     </div>
+  </div>
+</section>
+
+<main class="wrap stack">
+  <section aria-labelledby="pickTitle">
+    <h2 id="pickTitle" class="section-title">What would you like repaired?</h2>
+    <p class="muted">Tap a photo to see how we help.</p>
+    <div class="picker" id="picker">
+      <button class="pick" type="button" data-kind="grandfather" aria-pressed="false"><img src="/img/photos/grandfather.jpg" alt="" width="480" height="640" loading="lazy" decoding="async"><span>Grandfather clock</span></button>
+      <button class="pick" type="button" data-kind="wall" aria-pressed="false"><img src="/img/photos/wall.jpg" alt="" width="480" height="650" loading="lazy" decoding="async"><span>Wall clock</span></button>
+      <button class="pick" type="button" data-kind="mantel" aria-pressed="false"><img src="/img/photos/mantel.jpg" alt="" width="480" height="640" loading="lazy" decoding="async"><span>Table or mantel clock</span></button>
+      <button class="pick" type="button" data-kind="watch" aria-pressed="false"><img src="/img/photos/watch.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"><span>Wrist watch</span></button>
+    </div>
+    <div id="answer" class="card answer" aria-live="polite" hidden>
+      <h3 id="answerTitle"></h3>
+      <p id="answerText" class="muted"></p>
+      <a id="answerBtn" class="btn btn-primary" href="/book">Book now</a>
+    </div>
   </section>
 
-  <a class="card svc" href="/book?type=big">
-    <img src="/img/grandfather.svg" alt="" width="56" height="56">
+  <section class="story reveal">
+    <img src="/img/photos/movement.jpg" alt="Inside of a mechanical watch showing the gears and balance wheel" width="480" height="360" loading="lazy" decoding="async">
     <div>
-    <h3>Big clock? We come to you</h3>
-    <p class="muted">Grandfather, wall or cuckoo clocks. Book a home visit.</p>
+      <h2>Every repair is looked at by hand</h2>
+      <p>We open it up, find the real fault and tell you honestly what it needs and what it will cost, before we start.</p>
     </div>
-  </a>
-  <a class="card svc" href="/book?type=small">
-    <img src="/img/mantel.svg" alt="" width="56" height="56">
-    <div>
-    <h3>Small clock? Bring it to the shop</h3>
-    <p class="muted">Mantel, table or alarm clocks. Book a drop-off time.</p>
-    </div>
-  </a>
-  <a class="card svc" href="/watches">
-    <img src="/img/watch.svg" alt="" width="56" height="56">
-    <div>
-    <h3>Watch repair</h3>
-    <p class="muted">Please visit the store. See our hours and map.</p>
-    </div>
-  </a>
-  <a class="card" href="/track">
-    <h3>Already booked?</h3>
-    <p class="muted">Check your repair status with your booking ID and phone number.</p>
-  </a>
+  </section>
 
-  <section class="card">
+  <section class="card reveal">
     <h2>How it works</h2>
     <ol class="how">
       <li><span><b>Book online</b> or call us. It takes one minute.</span></li>
       <li><span><b>We call you</b> to confirm the day and time.</span></li>
       <li><span><b>Track your repair</b> with your booking ID.</span></li>
     </ol>
+    <a class="btn" href="/track">Already booked? Track your repair</a>
   </section>
 
-  <section class="card">
+  <section class="card faq reveal">
+    <h2>Common questions</h2>
+    <details><summary>Do I pay to book?</summary><p>No. Booking is free. We call you, look at the clock, and tell you the price before any work starts.</p></details>
+    <details><summary>Which clocks do you visit at home?</summary><p>Big ones: grandfather, wall and cuckoo clocks. Please give your home address when you book.</p></details>
+    <details><summary>Can I book a watch repair online?</summary><p>No. Please visit the store so we can look at your watch in person. Call us if you want to ask first.</p></details>
+    <details><summary>How do I know when it is ready?</summary><p>Use your booking ID and phone number on the Track page. We also call you when it is ready.</p></details>
+  </section>
+
+  <section class="card reveal">
     <h2>Find us</h2>
     <p data-shop-address>Shop address</p>
     <p class="muted" data-shop-hours>Opening hours</p>
+    <a class="btn" data-map href="#" rel="noopener">Open in Google Maps</a>
   </section>
 </main>
 
@@ -74,5 +87,6 @@
   <a class="btn btn-wa" data-wa href="https://wa.me/917899235968" rel="noopener">WhatsApp</a>
 </div>
 <script type="module" src="/js/common.js"></script>
+<script type="module" src="/js/home.js"></script>
 </body>
 </html>

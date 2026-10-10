@@ -28,7 +28,8 @@ Feel: warm, classic, trustworthy. Like a well-kept workshop. Calm, minimal motio
 - **Call / WhatsApp**: full-width buttons, always on screen: sticky bar at bottom of every public page.
 - **Forms**: one column, label above field, big inputs, one primary button.
 - **Status**: 5-step list (Booked → Received → Repairing → Ready → Delivered); current step bold with brass marker.
-- **Motion**: none except a 150ms colour change on press.
+- **Motion**: gentle only: scroll reveal, hover lift, pulsing open dot. All disabled under `prefers-reduced-motion`.
+- **Imagery**: real photographs only, no cartoon icons, no emoji. Photos live in `/img/photos`, all CC0 / public domain from Wikimedia Commons (grandfather: Lartington Station; wall: Antique wall clock; mantel: MET DP333812; watch: Mondaine Classic; movement: Mechanics movement feinmechanik; pendulum: Jacob Kock). Replace with the shop's own photos when available (same filenames).
 
 ## Rules
 - Plain English. No jargon. Dates like "Mon 12 Oct".

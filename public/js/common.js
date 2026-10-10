@@ -22,11 +22,13 @@ function hoursText(days) {
 }
 set('[data-shop-hours]', e => { e.textContent = SHOP.hours; });
 // Owner can change working days (e.g. open on Sundays) in the dashboard; show that here.
+const DEFAULT_DAYS = [1, 2, 3, 4, 5, 6];
+let workDaysP;
+export const getWorkDays = () => workDaysP ||= getDoc(doc(db, 'settings', 'availability'))
+  .then(s => (s.exists() && Array.isArray(s.data().workDays)) ? s.data().workDays : DEFAULT_DAYS)
+  .catch(() => DEFAULT_DAYS);
 if (document.querySelector('[data-shop-hours]')) {
-  getDoc(doc(db, 'settings', 'availability')).then(s => {
-    const days = s.exists() && s.data().workDays;
-    if (Array.isArray(days)) set('[data-shop-hours]', e => { e.textContent = hoursText(days); });
-  }).catch(() => {});
+  getWorkDays().then(days => set('[data-shop-hours]', e => { e.textContent = hoursText(days); }));
 }
 set('[data-shop-phone]', e => { e.textContent = SHOP.phone; });
 
