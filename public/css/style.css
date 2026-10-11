@@ -196,3 +196,77 @@ a.card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
 .skip { position: absolute; left: 8px; top: -60px; z-index: 50; padding: 12px 16px; border-radius: 8px; background: var(--brass); color: #fff; font-weight: 700; }
 .skip:focus { top: 8px; }
 a, button, summary, label, .pick { touch-action: manipulation; }
+
+/* ===== Formal pass: smaller type, square-ish corners, no gimmicks ===== */
+:root { --shadow: 0 1px 3px rgba(43,29,18,.10); --r: 6px; }
+body { font-size: 16px; line-height: 1.6; padding-bottom: 0; }
+h1 { font-size: 26px; } h2 { font-size: 20px; } h3 { font-size: 17px; }
+.wrap { max-width: 1040px; padding: 16px 20px; }
+.wrap.narrow { max-width: 620px; }
+main.wrap { padding-block: 28px 40px; }
+
+/* Header */
+.site-header { background: #fff; backdrop-filter: none; border-bottom: 1px solid var(--line); }
+.site-header .wrap { padding-block: 10px; }
+.brand span { font-size: 19px; letter-spacing: .01em; }
+.brand small { font-size: 10px; letter-spacing: .18em; }
+nav a { min-height: 40px; font-size: 15px; font-weight: 600; color: var(--ink); padding: 0 12px; }
+nav a:hover { color: var(--brass); border-bottom-color: var(--brass); }
+nav a[aria-current="page"] { color: var(--brass); }
+@media (max-width: 480px) { nav a { padding: 0 6px; font-size: 14px; } }
+
+/* Buttons and cards: flatter */
+.btn { border-radius: var(--r); min-height: 46px; font-size: 16px; font-weight: 600; letter-spacing: .01em; }
+.btn:hover { transform: none; box-shadow: none; filter: brightness(.95); }
+.btn-gold { background: var(--gold); border-color: var(--gold); color: #2B1D12; }
+.btn-light { backdrop-filter: none; }
+.card, .choice, input, select, textarea, .story, .pick { border-radius: var(--r); }
+.card { box-shadow: var(--shadow); padding: 20px; }
+a.card:hover, .pick:hover { transform: none; box-shadow: var(--shadow); }
+.pick:hover img { transform: none; }
+.pick { box-shadow: none; }
+.pick span { font: 600 15px Georgia, serif; }
+
+/* Hero: calmer, left aligned */
+.hero-photo::before, .page-hero::before { background: linear-gradient(90deg, rgba(30,19,10,.9), rgba(30,19,10,.55)); }
+.hero-photo .wrap { padding-block: 64px 56px; }
+.hero-photo h1 { font-size: clamp(26px, 4.2vw, 40px); max-width: 16em; margin-bottom: 14px; }
+.hero-photo p { font-size: 16px; max-width: 34em; }
+.hero-photo .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; max-width: none; }
+.hero-photo .hero-actions .btn { width: auto; min-width: 200px; flex: 0 1 auto; }
+.page-hero .wrap { padding-block: 32px 28px; }
+.page-hero h1 { font-size: 26px; }
+.page-hero p { font-size: 16px; }
+
+/* Open/closed note (now inside "Find us") */
+.status-pill { background: none; border: 0; padding: 0; margin: 0; color: var(--ink); font-size: 15px; font-weight: 600; backdrop-filter: none; }
+.status-pill::before { animation: none !important; box-shadow: none !important; }
+
+/* Sections */
+.section-title { margin-top: 8px; }
+.picker { gap: 12px; }
+.answer { border-left-width: 4px; }
+.story h2 { font-size: 20px; }
+.how li::before { box-shadow: none; }
+
+/* Desktop: use the width */
+@media (min-width: 760px) {
+  main.home { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  main.home > * { margin-top: 0 !important; }
+  main.home > section:first-child, main.home > .story, main.home > h1, main.home > p { grid-column: 1 / -1; }
+}
+
+/* Footer */
+.site-footer { background: var(--walnut); color: #E9DCC4; margin-top: 24px; font-size: 14.5px; }
+.site-footer .wrap { padding-block: 36px 20px; }
+.site-footer p { margin: 0 0 6px; }
+.site-footer a { color: #fff; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.foot-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+.foot-name { font: 700 18px Georgia, serif; color: #fff; }
+.foot-h { font: 700 11px system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px !important; }
+.foot-legal { margin-top: 28px !important; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.15); font-size: 13px; color: #BFAE90; }
+@media (min-width: 760px) { .foot-grid { grid-template-columns: 1.3fr 1.5fr 1.2fr 1fr; gap: 32px; } }
+@media (min-width: 760px) { main.home > section:last-child { grid-column: 1 / -1; } }
+.how { margin-bottom: 16px; }
+@media (min-width: 760px) { .story img { height: 300px; min-height: 0; } .story div { align-self: center; padding: 32px; } }
