@@ -270,3 +270,11 @@ a.card:hover, .pick:hover { transform: none; box-shadow: var(--shadow); }
 @media (min-width: 760px) { main.home > section:last-child { grid-column: 1 / -1; } }
 .how { margin-bottom: 16px; }
 @media (min-width: 760px) { .story img { height: 300px; min-height: 0; } .story div { align-self: center; padding: 32px; } }
+
+/* Prominent shop name (public pages) */
+.site-header .wrap:has(a.brand) { flex-direction: column; align-items: center; gap: 0; padding-block: 18px 0; }
+a.brand { text-align: center; }
+a.brand span { display: block; font-size: 26px; line-height: 1.15; letter-spacing: .02em; }
+a.brand small { font-size: 11px; letter-spacing: .24em; margin-bottom: 4px; }
+.site-header nav:not(.x) { justify-content: center; width: 100%; margin-top: 12px; border-top: 1px solid var(--line); }
+@media (min-width: 760px) { a.brand span { font-size: 38px; } a.brand small { font-size: 12px; } .site-header .wrap:has(a.brand) { padding-top: 24px; } }
